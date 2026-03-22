@@ -80,6 +80,26 @@ Part-DB is also used by small companies and universities for managing their inve
 * Shell access to your server is highly recommended!
 * For building the client-side assets **yarn** and **nodejs** (>= 20.0) is needed.
 
+## Docker Quick Start
+
+This repository now includes a `docker-compose.yml` file that builds the app image from the local `Dockerfile` and
+persists the SQLite database in `uploads/`.
+
+1. Install Docker Desktop or Docker Engine with Compose support.
+2. Open a terminal in the repository root.
+3. Run `sh ./setup-docker.sh`.
+4. Open `http://localhost:8080` in your browser.
+
+The setup script builds the image, starts the container, waits for the site to answer, and relies on Docker
+automigration for first-run database setup.
+
+Default local login after the first startup:
+
+* Username: `admin`
+* Password: `partdbadmin`
+
+Change the admin password after the first login if you keep using the instance.
+
 ## Installation
 
 If you want to upgrade your legacy (< 1.0.0) version of Part-DB to this version, please

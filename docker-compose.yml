@@ -1,0 +1,21 @@
+services:
+  partdb:
+    container_name: partdb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./uploads:/var/www/html/uploads
+      - ./public/media:/var/www/html/public/media
+    env_file:
+      - .env.docker
+    environment:
+      APP_ENV: docker
+      APP_DEBUG: "0"
+      DB_AUTOMIGRATE: "true"
+      DEFAULT_URI: "http://localhost:8080/"
+      DATABASE_URL: "sqlite:///%kernel.project_dir%/uploads/app.db"
+      INITIAL_ADMIN_PW: "partdbadmin"
+    restart: unless-stopped
